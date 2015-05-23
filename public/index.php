@@ -10,8 +10,18 @@ $app = new \Slim\Slim(array(
     'templates.path' => '../src/views',
     
     // system
-    'templates.ext' => '.php'
+    'templates.ext' => '.html'
 ));
+
+Class RouteDumper extends \Slim\Router {
+    public static function getAllRoutes() {
+        $slim = \Slim\Slim::getInstance();
+        return $slim->router->routes;
+    }
+}
+
+#$routes = RouteDumper::getAllRoutes();
+#var_dump($routes);
 
 @include_once('../src/system.php');
 @include_once('../src/routes.php');
